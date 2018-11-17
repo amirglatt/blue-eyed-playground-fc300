@@ -1,0 +1,181 @@
+---
+label: Config
+hide_body: true
+is_partial: false
+fields:
+  - type: text
+    name: title
+    label: Title
+    description: Site title
+    config:
+      required: true
+  - type: text
+    name: landing_template
+    label: Landing Template
+    hidden: true
+    default: home
+  - type: field_group
+    name: header
+    label: Header Configuration
+    description: The page header
+    fields:
+      - type: field_group
+        name: submenu
+        label: Header Menu Submenus
+        description: The header menu option wit submenu options
+        fields:
+          - type: text
+            name: title
+            label: Submenu Title
+          - type: field_group_list
+            name: items
+            label: Submenu Items
+            config:
+              labelField: title
+            fields:
+              - type: text
+                name: title
+                label: Title
+              - type: text
+                name: url
+                label: URL
+      - type: field_group_list
+        name: actions
+        label: Menu Action Buttons
+        config:
+          labelField: label
+        fields:
+          - type: text
+            name: label
+            label: Label
+            description: text displayed inside the button
+          - type: text
+            name: url
+            label: URL
+          - type: boolean
+            name: is_primary
+            label: Is Primary
+            description: gives button a primary color scheme
+            default: false
+  - type: field_group
+    name: footer
+    label: Footer Configuration
+    description: The page footer
+    fields:
+      - type: field_group
+        name: about
+        label: About Section
+        description: The footer about section
+        fields:
+          - type: textarea
+            name: title
+            label: About Section Title
+          - type: textarea
+            name: text
+            label: About section Text
+            config:
+              wysiwyg: true
+              schema:
+                format: markdown
+          - type: field_group_list
+            name: actions
+            label: About Section Action Buttons
+            config:
+              labelField: label
+            fields:
+              - type: include
+                name: include_action
+                label: Action
+                template: action
+      - type: field_group
+        name: news
+        label: News Section
+        description: The footer news section
+        fields:
+          - type: text
+            name: title
+            label: News Section Title
+      - type: field_group
+        name: contact
+        label: Contact Section
+        description: The footer contact section
+        fields:
+          - type: text
+            name: title
+            label: Contact Section Title
+          - type: field_group_list
+            name: contact_list
+            label: Contact Methods
+            description: A list of contact methods
+            config:
+              labelField: title
+            fields:
+              - type: text
+                name: title
+                label: Method Title
+              - type: textarea
+                name: text
+                label: Method Description
+              - type: text
+                name: icon
+                label: Method Icon
+                description: Font Awesome Icon
+              - type: text
+                name: url
+                label: URL
+      - type: text
+        name: copyright
+        label: Footer Copyright Text
+  - type: select
+    name: palette
+    label: Color Palette
+    description: The color palette for the site
+    default: cyan
+    config:
+      required: true
+      source:
+        type: custom
+      options:
+        - cyan
+        - green
+        - red
+  - type: field_group
+    name: palettes
+    hidden: true
+    fields:
+      - type: field_group
+        name: cyan
+        fields:
+          - type: field_group
+            name: sass
+            fields:
+              - type: text
+                name: accent1
+              - type: text
+                name: accent3
+              - type: text
+                name: accent4
+      - type: field_group
+        name: green
+        fields:
+          - type: field_group
+            name: sass
+            fields:
+              - type: text
+                name: accent1
+              - type: text
+                name: accent3
+              - type: text
+                name: accent4
+      - type: field_group
+        name: red
+        fields:
+          - type: field_group
+            name: sass
+            fields:
+              - type: text
+                name: accent1
+              - type: text
+                name: accent3
+              - type: text
+                name: accent4
